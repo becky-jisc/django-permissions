@@ -29,7 +29,7 @@ class Permission(models.Model):
     """
     name = models.CharField(_(u"Name"), max_length=100, unique=True)
     codename = models.CharField(_(u"Codename"), max_length=100, unique=True)
-    content_types = models.ManyToManyField(ContentType, verbose_name=_(u"Content Types"), blank=True, null=True,
+    content_types = models.ManyToManyField(ContentType, verbose_name=_(u"Content Types"), blank=True,
                                            related_name="content_types")
 
     def __unicode__(self):
@@ -94,7 +94,7 @@ class Role(models.Model):
     name = models.CharField(max_length=100, unique=True)
     codename = models.CharField(_(u"Codename"), max_length=100, unique=True)
     global_permissions = models.ManyToManyField(Permission, verbose_name=_(u"Global permissions"),
-                                                blank=True, null=True, related_name="roles_globals")
+                                                blank=True, related_name="roles_globals")
 
     class Meta:
         ordering = ("name", )
